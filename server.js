@@ -10,6 +10,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.static(path.join(__dirname, '/public')));
+
 app.get('/', (req, res) => {
   res.show('index.html');
 });
@@ -26,13 +28,21 @@ app.get('/info', (req, res) => {
   res.show('info.html');
 });
 
-app.get('/history', (req, res) => {
+app.get('/history', (req, res, next) => {
   res.show('history.html');
 });
 
 app.use((req, res) => {
   res.status(404).send('404 not found...');
 })
+
+app.get('/style.css', (req, res) => {
+  res.sendFile('style.css');
+});
+
+app.get('/test.jpg', (req, res) => {
+  res.sendFile('test.jpg');
+});
 
 app.listen(8000, () => {
   console.log('Server is running on port: 8000');
