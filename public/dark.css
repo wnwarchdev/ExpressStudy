@@ -1,0 +1,22 @@
+h1 {
+    font-weight: lighter;
+    color: darkgrey;
+    font-style: italic;
+  }
+
+a {
+  color: yellow;
+}
+
+.bodyframe a {
+  display: block;
+}
+
+body{
+  background-color: rgb(51, 48, 48);
+  text-align: center;
+}
+
+.bodyframe {
+  border: 2px solid darkgrey;
+}
