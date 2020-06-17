@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 
+
 const app = express();
 
 app.use((req, res, next) => {
@@ -17,7 +18,7 @@ app.use('/user/settings', (req, res, next) => {
 });
 
 app.use('/user/panel', (req, res, next) => {
-  res.send('Go home!');
+  res.send('Go home now!');
 });
 
 app.get('/', (req, res) => {
