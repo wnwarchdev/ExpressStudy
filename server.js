@@ -33,6 +33,10 @@ app.get('/about', (req, res) => {
   res.show('about.html');
 });
 
+app.get('/hello/:name', (req, res) => {
+  res.send(`Witaj: ${req.params.name} !`);
+});
+
 app.use((req, res) => {
   res.status(404).show('error.html');
 })
