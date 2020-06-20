@@ -10,13 +10,15 @@ app.set('view engine', '.hbs');
 
 
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 app.use('/user/settings', (req, res, next) => {
   res.send('Go away!');
 });
 
 app.use('/user/panel', (req, res, next) => {
-  res.send('Go home now!');
+  res.send('Go home now!'); 
 });
 
 app.get('/', (req, res) => {
@@ -27,6 +29,10 @@ app.get('/home', (req, res) => {
   res.render('index', )
 });
 
+app.get('/contact', (req, res) => {
+  res.render('contact', )
+});
+
 app.get('/about', (req, res) => {
   res.render('about', { layout: 'dark' });
 });
@@ -34,6 +40,24 @@ app.get('/about', (req, res) => {
 app.get('/hello/:name', (req, res) => {
   res.render('hello', { name: req.params.name });
 });
+
+
+app.post('/contact/send-message', (req, res) => {
+
+  const { author, sender, title, message } = req.body;
+
+  if(author && sender && title && message) {
+    res.render('contact', { isSent: true });
+  }
+  else {
+    res.render('contact', { isError: true });
+  }
+
+});
+
+
+
+
 
 app.use((req, res) => {
   res.status(404).render('error');
