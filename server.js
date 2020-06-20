@@ -44,9 +44,9 @@ app.get('/hello/:name', (req, res) => {
 
 app.post('/contact/send-message', (req, res) => {
 
-  const { author, sender, title, message } = req.body;
+  const { author, sender, title, message, attach } = req.body;
 
-  if(author && sender && title && message) {
+  if(author && sender && title && message && attach) {
     res.render('contact', { isSent: true });
   }
   else {
